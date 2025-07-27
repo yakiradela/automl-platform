@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: automl-platform
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: automl-platform 
+  template:
+    metadata:
+      labels: 
+        app: 
+    spec: 
+      containers:
+      - name: automl-platform
+        image: automl-platform
+        ports:
+        - containerPort: 5000 
+             
