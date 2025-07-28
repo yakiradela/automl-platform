@@ -15,3 +15,8 @@ variable "node_group_name" {
   type        = string
   default     = "automl-nodes"
 }
+
+variable "s3_bucket_name" {
+  description = "Existing S3 bucket name"
+  type        = string
+}
