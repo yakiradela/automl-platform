@@ -3,7 +3,7 @@ name: Deploy AutoML Platform
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   AWS_REGION: us-east-2
