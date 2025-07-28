@@ -1,12 +1,7 @@
-resource "aws_s3_bucket" "csv_data" {
-  bucket        = "your-new-csv-bucket-name"
-  force_destroy = true
-
-  versioning {
-    enabled = true
-  }
-  
-  tags = {
-    Name = "CSV Data Bucket"
+terraform {
+  backend "s3" {
+    bucket = "your-terraform-state-bucket"  # שים כאן את שם הבאקט לאחסון ה-state
+    key    = "state/terraform.tfstate"      # נתיב בתוך הבאקט (אפשר פשוט terraform.tfstate)
+    region = "us-east-2"                     # אזור הבאקט
   }
 }
