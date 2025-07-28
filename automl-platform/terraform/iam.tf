@@ -15,7 +15,6 @@ resource "aws_iam_role" "eks_worker" {
 }
 
 resource "aws_iam_role_policy_attachment" "worker_attach" {
-  count      = var.node_group_name != "" ? 1 : 0
   role       = aws_iam_role.eks_worker.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
