@@ -9,7 +9,7 @@ output "cluster_security_group_id" {
 }
 
 output "s3_bucket_name" {
-  value = aws_s3_bucket.csv_data.id
+  value = data.aws_s3_bucket.csv_data.bucket
 }
 
 output "ecr_api_repo_url" {
