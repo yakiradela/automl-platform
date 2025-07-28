@@ -1,16 +1,17 @@
-# Create an ECR repository for storing Docker images
-
-resource "aws_ecr_repository" "automl_repo" {
-  name                 = var.ecr_repository_name
+resource "aws_ecr_repository" "api" {
+  name                 = "automl-api"
   image_tag_mutability = "MUTABLE"
-  force_delete         = true
 
   image_scanning_configuration {
     scan_on_push = true
   }
+}
 
-  tags = {
-    Name        = var.ecr_repository_name
-    Environment = var.environment
+resource "aws_ecr_repository" "trainer" {
+  name                 = "automl-trainer"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
   }
 }
