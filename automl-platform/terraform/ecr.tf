@@ -1,24 +1,16 @@
-data "aws_availability_zones" "available" {
-  state = "available"
-}
+# Create an ECR repository for storing Docker images
 
-module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "19.0.0"
+resource "aws_ecr_repository" "automl_repo" {
+  name                 = var.ecr_repository_name
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true
 
-  cluster_name    = var.cluster_name
-  cluster_version = "1.27"
-  subnets         = module.vpc.private_subnets
-  vpc_id          = module.vpc.vpc_id
-
-  node_groups = {
-    "${var.node_group_name}" = {
-      desired_capacity = 2
-      max_capacity     = 3
-      min_capacity     = 1
-      instance_types   = ["t3.medium"]
-    }
+  image_scanning_configuration {
+    scan_on_push = true
   }
 
-  manage_aws_auth = true
+  tags = {
+    Name        = var.ecr_repository_name
+    Environment = var.environment
+  }
 }
