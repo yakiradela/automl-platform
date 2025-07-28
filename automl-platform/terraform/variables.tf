@@ -17,6 +17,14 @@ variable "node_group_name" {
 }
 
 variable "s3_bucket_name" {
-  description = "Existing S3 bucket name"
+  description = "Name of the S3 bucket to create"
   type        = string
+  default     = "automl-platform-csv-data"
 }
+
+variable "environment" {
+  description = "Deployment environment (e.g. dev, staging, prod)"
+  type        = string
+  default     = "dev"
+}
+
